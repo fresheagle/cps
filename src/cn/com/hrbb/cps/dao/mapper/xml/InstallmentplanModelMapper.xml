@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.com.hrbb.cps.dao.mapper.InstallmentplanModelMapper" >
+  <resultMap id="BaseResultMap" type="cn.com.hrbb.cps.model.InstallmentplanModel" >
+    <id column="InstallmentSerial" property="installmentserial" jdbcType="INTEGER" />
+    <result column="InstallmentCode" property="installmentcode" jdbcType="VARCHAR" />
+    <result column="InstallmentType" property="installmenttype" jdbcType="VARCHAR" />
+    <result column="InstallmentDes" property="installmentdes" jdbcType="VARCHAR" />
+    <result column="DimensionTypeCode" property="dimensiontypecode" jdbcType="VARCHAR" />
+    <result column="DimensionParameter" property="dimensionparameter" jdbcType="VARCHAR" />
+    <result column="CreateDate" property="createdate" jdbcType="VARCHAR" />
+    <result column="UserId" property="userid" jdbcType="VARCHAR" />
+    <result column="Remark1" property="remark1" jdbcType="VARCHAR" />
+    <result column="Remark2" property="remark2" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    InstallmentSerial, InstallmentCode, InstallmentType, InstallmentDes, DimensionTypeCode, 
+    DimensionParameter, CreateDate, UserId, Remark1, Remark2
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from installmentplan
+    where InstallmentSerial = #{installmentserial,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from installmentplan
+    where InstallmentSerial = #{installmentserial,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="cn.com.hrbb.cps.model.InstallmentplanModel" >
+    insert into installmentplan (InstallmentSerial, InstallmentCode, 
+      InstallmentType, InstallmentDes, DimensionTypeCode, 
+      DimensionParameter, CreateDate, UserId, 
+      Remark1, Remark2)
+    values (#{installmentserial,jdbcType=INTEGER}, #{installmentcode,jdbcType=VARCHAR}, 
+      #{installmenttype,jdbcType=VARCHAR}, #{installmentdes,jdbcType=VARCHAR}, #{dimensiontypecode,jdbcType=VARCHAR}, 
+      #{dimensionparameter,jdbcType=VARCHAR}, #{createdate,jdbcType=VARCHAR}, #{userid,jdbcType=VARCHAR}, 
+      #{remark1,jdbcType=VARCHAR}, #{remark2,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="cn.com.hrbb.cps.model.InstallmentplanModel" >
+    insert into installmentplan
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="installmentserial != null" >
+        InstallmentSerial,
+      </if>
+      <if test="installmentcode != null" >
+        InstallmentCode,
+      </if>
+      <if test="installmenttype != null" >
+        InstallmentType,
+      </if>
+      <if test="installmentdes != null" >
+        InstallmentDes,
+      </if>
+      <if test="dimensiontypecode != null" >
+        DimensionTypeCode,
+      </if>
+      <if test="dimensionparameter != null" >
+        DimensionParameter,
+      </if>
+      <if test="createdate != null" >
+        CreateDate,
+      </if>
+      <if test="userid != null" >
+        UserId,
+      </if>
+      <if test="remark1 != null" >
+        Remark1,
+      </if>
+      <if test="remark2 != null" >
+        Remark2,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="installmentserial != null" >
+        #{installmentserial,jdbcType=INTEGER},
+      </if>
+      <if test="installmentcode != null" >
+        #{installmentcode,jdbcType=VARCHAR},
+      </if>
+      <if test="installmenttype != null" >
+        #{installmenttype,jdbcType=VARCHAR},
+      </if>
+      <if test="installmentdes != null" >
+        #{installmentdes,jdbcType=VARCHAR},
+      </if>
+      <if test="dimensiontypecode != null" >
+        #{dimensiontypecode,jdbcType=VARCHAR},
+      </if>
+      <if test="dimensionparameter != null" >
+        #{dimensionparameter,jdbcType=VARCHAR},
+      </if>
+      <if test="createdate != null" >
+        #{createdate,jdbcType=VARCHAR},
+      </if>
+      <if test="userid != null" >
+        #{userid,jdbcType=VARCHAR},
+      </if>
+      <if test="remark1 != null" >
+        #{remark1,jdbcType=VARCHAR},
+      </if>
+      <if test="remark2 != null" >
+        #{remark2,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.com.hrbb.cps.model.InstallmentplanModel" >
+    update installmentplan
+    <set >
+      <if test="installmentcode != null" >
+        InstallmentCode = #{installmentcode,jdbcType=VARCHAR},
+      </if>
+      <if test="installmenttype != null" >
+        InstallmentType = #{installmenttype,jdbcType=VARCHAR},
+      </if>
+      <if test="installmentdes != null" >
+        InstallmentDes = #{installmentdes,jdbcType=VARCHAR},
+      </if>
+      <if test="dimensiontypecode != null" >
+        DimensionTypeCode = #{dimensiontypecode,jdbcType=VARCHAR},
+      </if>
+      <if test="dimensionparameter != null" >
+        DimensionParameter = #{dimensionparameter,jdbcType=VARCHAR},
+      </if>
+      <if test="createdate != null" >
+        CreateDate = #{createdate,jdbcType=VARCHAR},
+      </if>
+      <if test="userid != null" >
+        UserId = #{userid,jdbcType=VARCHAR},
+      </if>
+      <if test="remark1 != null" >
+        Remark1 = #{remark1,jdbcType=VARCHAR},
+      </if>
+      <if test="remark2 != null" >
+        Remark2 = #{remark2,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where InstallmentSerial = #{installmentserial,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.com.hrbb.cps.model.InstallmentplanModel" >
+    update installmentplan
+    set InstallmentCode = #{installmentcode,jdbcType=VARCHAR},
+      InstallmentType = #{installmenttype,jdbcType=VARCHAR},
+      InstallmentDes = #{installmentdes,jdbcType=VARCHAR},
+      DimensionTypeCode = #{dimensiontypecode,jdbcType=VARCHAR},
+      DimensionParameter = #{dimensionparameter,jdbcType=VARCHAR},
+      CreateDate = #{createdate,jdbcType=VARCHAR},
+      UserId = #{userid,jdbcType=VARCHAR},
+      Remark1 = #{remark1,jdbcType=VARCHAR},
+      Remark2 = #{remark2,jdbcType=VARCHAR}
+    where InstallmentSerial = #{installmentserial,jdbcType=INTEGER}
+  </update>
+  
+  <select id="GetInstallmentPlanCode" parameterType="java.util.HashMap" resultMap="BaseResultMap">
+        select * from installmentplan where DimensionTypeCode like #{DimensionTypeCode} and DimensionParameter like #{DimensionParameter}
+  </select>
+</mapper>

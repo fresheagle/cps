@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.com.hrbb.cps.dao.mapper.TradelogModelMapper" >
+  <resultMap id="BaseResultMap" type="cn.com.hrbb.cps.model.TradelogModel" >
+    <id column="LogId" property="logid" jdbcType="INTEGER" />
+    <result column="TradeCode" property="tradecode" jdbcType="VARCHAR" />
+    <result column="TradeSerial" property="tradeserial" jdbcType="VARCHAR" />
+    <result column="ChannelCode" property="channelcode" jdbcType="VARCHAR" />
+    <result column="Content" property="content" jdbcType="VARCHAR" />
+    <result column="RequestTime" property="requesttime" jdbcType="VARCHAR" />
+    <result column="ResponeTime" property="responetime" jdbcType="VARCHAR" />
+    <result column="ReasonCode" property="reasoncode" jdbcType="VARCHAR" />
+    <result column="Remark1" property="remark1" jdbcType="VARCHAR" />
+    <result column="Remark2" property="remark2" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    LogId, TradeCode, TradeSerial, ChannelCode, Content, RequestTime, ResponeTime, ReasonCode, 
+    Remark1, Remark2
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from tradelog
+    where LogId = #{logid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from tradelog
+    where LogId = #{logid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="cn.com.hrbb.cps.model.TradelogModel" >
+    insert into tradelog (LogId, TradeCode, TradeSerial, 
+      ChannelCode, Content, RequestTime, 
+      ResponeTime, ReasonCode, Remark1, 
+      Remark2)
+    values (#{logid,jdbcType=INTEGER}, #{tradecode,jdbcType=VARCHAR}, #{tradeserial,jdbcType=VARCHAR}, 
+      #{channelcode,jdbcType=VARCHAR}, #{content,jdbcType=VARCHAR}, #{requesttime,jdbcType=VARCHAR}, 
+      #{responetime,jdbcType=VARCHAR}, #{reasoncode,jdbcType=VARCHAR}, #{remark1,jdbcType=VARCHAR}, 
+      #{remark2,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="cn.com.hrbb.cps.model.TradelogModel" >
+    insert into tradelog
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="logid != null" >
+        LogId,
+      </if>
+      <if test="tradecode != null" >
+        TradeCode,
+      </if>
+      <if test="tradeserial != null" >
+        TradeSerial,
+      </if>
+      <if test="channelcode != null" >
+        ChannelCode,
+      </if>
+      <if test="content != null" >
+        Content,
+      </if>
+      <if test="requesttime != null" >
+        RequestTime,
+      </if>
+      <if test="responetime != null" >
+        ResponeTime,
+      </if>
+      <if test="reasoncode != null" >
+        ReasonCode,
+      </if>
+      <if test="remark1 != null" >
+        Remark1,
+      </if>
+      <if test="remark2 != null" >
+        Remark2,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="logid != null" >
+        #{logid,jdbcType=INTEGER},
+      </if>
+      <if test="tradecode != null" >
+        #{tradecode,jdbcType=VARCHAR},
+      </if>
+      <if test="tradeserial != null" >
+        #{tradeserial,jdbcType=VARCHAR},
+      </if>
+      <if test="channelcode != null" >
+        #{channelcode,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null" >
+        #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="requesttime != null" >
+        #{requesttime,jdbcType=VARCHAR},
+      </if>
+      <if test="responetime != null" >
+        #{responetime,jdbcType=VARCHAR},
+      </if>
+      <if test="reasoncode != null" >
+        #{reasoncode,jdbcType=VARCHAR},
+      </if>
+      <if test="remark1 != null" >
+        #{remark1,jdbcType=VARCHAR},
+      </if>
+      <if test="remark2 != null" >
+        #{remark2,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.com.hrbb.cps.model.TradelogModel" >
+    update tradelog
+    <set >
+      <if test="tradecode != null" >
+        TradeCode = #{tradecode,jdbcType=VARCHAR},
+      </if>
+      <if test="tradeserial != null" >
+        TradeSerial = #{tradeserial,jdbcType=VARCHAR},
+      </if>
+      <if test="channelcode != null" >
+        ChannelCode = #{channelcode,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null" >
+        Content = #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="requesttime != null" >
+        RequestTime = #{requesttime,jdbcType=VARCHAR},
+      </if>
+      <if test="responetime != null" >
+        ResponeTime = #{responetime,jdbcType=VARCHAR},
+      </if>
+      <if test="reasoncode != null" >
+        ReasonCode = #{reasoncode,jdbcType=VARCHAR},
+      </if>
+      <if test="remark1 != null" >
+        Remark1 = #{remark1,jdbcType=VARCHAR},
+      </if>
+      <if test="remark2 != null" >
+        Remark2 = #{remark2,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where LogId = #{logid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.com.hrbb.cps.model.TradelogModel" >
+    update tradelog
+    set TradeCode = #{tradecode,jdbcType=VARCHAR},
+      TradeSerial = #{tradeserial,jdbcType=VARCHAR},
+      ChannelCode = #{channelcode,jdbcType=VARCHAR},
+      Content = #{content,jdbcType=VARCHAR},
+      RequestTime = #{requesttime,jdbcType=VARCHAR},
+      ResponeTime = #{responetime,jdbcType=VARCHAR},
+      ReasonCode = #{reasoncode,jdbcType=VARCHAR},
+      Remark1 = #{remark1,jdbcType=VARCHAR},
+      Remark2 = #{remark2,jdbcType=VARCHAR}
+    where LogId = #{logid,jdbcType=INTEGER}
+  </update>
+	<insert id="InsertLog" parameterType="TradeLog" useGeneratedKeys="true" keyProperty="LogId">
+		insert into tradelog(TradeCode,TradeSerial,ChannelCode,Content,RequestTime,ResponeTime,ReasonCode) values(#{tradecode},#{tradeserial},#{channelcode},#{content},#{requesttime},#{responetime},#{reasoncode})
+	</insert>
+</mapper>

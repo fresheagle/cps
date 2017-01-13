@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.com.hrbb.cps.dao.mapper.InstallmentrateModelMapper" >
+  <resultMap id="BaseResultMap" type="cn.com.hrbb.cps.model.InstallmentrateModel" >
+    <id column="RateSerial" property="rateserial" jdbcType="INTEGER" />
+    <result column="InstallmentPlanCode" property="installmentplancode" jdbcType="VARCHAR" />
+    <result column="InstallmentTypeCode" property="installmenttypecode" jdbcType="VARCHAR" />
+    <result column="StageNum" property="stagenum" jdbcType="VARCHAR" />
+    <result column="InstallmentRate" property="installmentrate" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    RateSerial, InstallmentPlanCode, InstallmentTypeCode, StageNum, InstallmentRate
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from installmentrate
+    where RateSerial = #{rateserial,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from installmentrate
+    where RateSerial = #{rateserial,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="cn.com.hrbb.cps.model.InstallmentrateModel" >
+    insert into installmentrate (RateSerial, InstallmentPlanCode, 
+      InstallmentTypeCode, StageNum, InstallmentRate
+      )
+    values (#{rateserial,jdbcType=INTEGER}, #{installmentplancode,jdbcType=VARCHAR}, 
+      #{installmenttypecode,jdbcType=VARCHAR}, #{stagenum,jdbcType=VARCHAR}, #{installmentrate,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="cn.com.hrbb.cps.model.InstallmentrateModel" >
+    insert into installmentrate
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="rateserial != null" >
+        RateSerial,
+      </if>
+      <if test="installmentplancode != null" >
+        InstallmentPlanCode,
+      </if>
+      <if test="installmenttypecode != null" >
+        InstallmentTypeCode,
+      </if>
+      <if test="stagenum != null" >
+        StageNum,
+      </if>
+      <if test="installmentrate != null" >
+        InstallmentRate,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="rateserial != null" >
+        #{rateserial,jdbcType=INTEGER},
+      </if>
+      <if test="installmentplancode != null" >
+        #{installmentplancode,jdbcType=VARCHAR},
+      </if>
+      <if test="installmenttypecode != null" >
+        #{installmenttypecode,jdbcType=VARCHAR},
+      </if>
+      <if test="stagenum != null" >
+        #{stagenum,jdbcType=VARCHAR},
+      </if>
+      <if test="installmentrate != null" >
+        #{installmentrate,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.com.hrbb.cps.model.InstallmentrateModel" >
+    update installmentrate
+    <set >
+      <if test="installmentplancode != null" >
+        InstallmentPlanCode = #{installmentplancode,jdbcType=VARCHAR},
+      </if>
+      <if test="installmenttypecode != null" >
+        InstallmentTypeCode = #{installmenttypecode,jdbcType=VARCHAR},
+      </if>
+      <if test="stagenum != null" >
+        StageNum = #{stagenum,jdbcType=VARCHAR},
+      </if>
+      <if test="installmentrate != null" >
+        InstallmentRate = #{installmentrate,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where RateSerial = #{rateserial,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.com.hrbb.cps.model.InstallmentrateModel" >
+    update installmentrate
+    set InstallmentPlanCode = #{installmentplancode,jdbcType=VARCHAR},
+      InstallmentTypeCode = #{installmenttypecode,jdbcType=VARCHAR},
+      StageNum = #{stagenum,jdbcType=VARCHAR},
+      InstallmentRate = #{installmentrate,jdbcType=VARCHAR}
+    where RateSerial = #{rateserial,jdbcType=INTEGER}
+  </update>
+  
+  <select id="GetInstallmentRate" parameterType="String" resultMap="BaseResultMap">
+    select * from installmentrate where InstallmentPlanCode like #{InstallmentPlanCode}
+  </select>
+</mapper>
